@@ -1,0 +1,77 @@
+---
+title: "RMarkdown Websites"
+output: 
+  html_document: 
+    toc: yes
+---
+
+Note: This tiny intro is an excerpt from the full documentation at **<http://rmarkdown.rstudio.com/rmarkdown_websites.html>**. Go read the full documentation there!
+
+## Overview
+
+You can render collections of R Markdown documents as a website using the `rmarkdown::render_site` function. These features are available only in the most recent version of the rmarkdown package (v0.9.6).
+
+The RStudio IDE also includes integrated support for developing R Markdown websites. These features are available in the current [Preview Release](https://www.rstudio.com/products/rstudio/download/preview/).
+
+## Simple Example
+
+Here's a simple example, a website that includes two pages (Home and About) and a navigation bar to switch between them:
+
+**\_site.yml**
+
+```
+name: "my-website"
+navbar:
+  title: "My Website"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "About"
+      href: about.html
+```
+
+**index.Rmd**
+
+```
+---
+title: "My Website"
+---
+
+Hello, Website!
+```
+
+**about.Rmd**
+
+```
+---
+title: "About This Website"
+---
+
+More about this website.
+```
+
+All you need for a minimal website is an `index.Rmd` and a `_site.yml` file. If you execute `rmarkdown::render_site()` or hit the "Build website" button in RStudio, the following happen:
+
+1. All of the Rmd and md files in the root website directory will be rendered into HTML. Note however that markdown files beginning with “_" are not rendered (this is a convention to designate files that are included by top level documents).
+2. The generated HTML files and any supporting files (e.g. CSS and JavaScript) are copied into an output directory (_site by default).
+3. The HTML files within the _site directory are now ready to deploy as a standalone static website.
+
+## Deploying to gh-pages
+
+The master branch of this repo tracks all source files and rendered output. The rendered `_site/` directory is not tracked on master, and is deployed to the `gh-pages` branch using [ghp-import](https://github.com/stephenturner/ghp-import). Commit all changes and push the repo to the master branch then run `ghp-import` on the `_site/` directory (run `ghp-import -h` to get some help).
+
+```sh
+ghp-import -p -n -m "$(date)" _site
+```
+
+
+## More info
+
+See the full documentation for authoring RMarkdown Websites at **<http://rmarkdown.rstudio.com/rmarkdown_websites.html>**.
+
+The source code for this repo is at **<https://github.com/UVa-R-Users-Group/rmdwebdemo>**.
+
+The Bioconnector workshop's course content is made entirely using this framework. This includes a more complicated and customized nav bar and many more pages.
+
+- Rendered course website: **[bioconnector.org/workshops](http://bioconnector.org/workshops/)**
+- Source: **[github.com/bioconnector/workshops](https://github.com/bioconnector/workshops)**

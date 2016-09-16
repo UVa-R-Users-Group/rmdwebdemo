@@ -1,0 +1,7 @@
+---
+title: "About"
+---
+
+The source code for this repo is at **<https://github.com/UVa-R-Users-Group/rmdwebdemo>**. See the full documentation for authoring RMarkdown Websites at **<http://rmarkdown.rstudio.com/rmarkdown_websites.html>**.
+
+

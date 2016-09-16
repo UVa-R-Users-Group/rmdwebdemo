@@ -1,0 +1,8 @@
+name: "UVA RUG RMarkdown Website Demo"
+navbar:
+  title: "UVA RUG Rmd Web Demo"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "About"
+      href: about.html
